@@ -1,13 +1,12 @@
-
-1. Recuperação simples
+--1. Recuperação simples
 
 SELECT nome, telefone FROM Cliente;
 
-2. Filtro com WHERE
+--2. Filtro com WHERE
 
 SELECT * FROM Ordem_Servico WHERE status = 'Aberta';
 
-3. Atributo derivado: custo total por OS
+--3. Atributo derivado: custo total por OS
 
 SELECT os.id_os,
        SUM(p.valor_unitario * op.quantidade) AS total_pecas,
@@ -20,11 +19,11 @@ JOIN OS_Servicos oss ON os.id_os = oss.id_os
 JOIN Servico s ON oss.id_servico = s.id_servico
 GROUP BY os.id_os;
 
-4. ORDER BY
+--4. ORDER BY
 
 SELECT nome, salario FROM Funcionario ORDER BY salario DESC;
 
-5. HAVING (filtrar OS com custo > 200)
+--5. HAVING (filtrar OS com custo > 200)
 
 SELECT os.id_os,
        SUM(p.valor_unitario * op.quantidade) + SUM(s.valor) AS total
@@ -36,7 +35,7 @@ JOIN Servico s ON oss.id_servico = s.id_servico
 GROUP BY os.id_os
 HAVING total > 200;
 
-6. JOIN com múltiplas tabelas: nome do cliente, veículo e serviços realizados
+--6. JOIN com múltiplas tabelas: nome do cliente, veículo e serviços realizados
 
 SELECT c.nome AS cliente, v.modelo AS veiculo, s.descricao AS servico
 FROM Ordem_Servico os
